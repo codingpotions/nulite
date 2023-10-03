@@ -1,27 +1,24 @@
 <style>
-  .navbar {
+  .footer {
     max-width: var(--container-max-size);
     padding: var(--space-7) var(--container-padding-sides);
-    margin: 0 auto;
+    margin: var(--space-4) auto 8rem auto;
   }
-  .navbar a {
+  .footer a {
     text-decoration: none;
     color: unset;
   }
-  .navbar a:hover {
+  .footer a:hover {
     color: var(--color-primary);
     transition: color 0.2s ease-in-out;
   }
-  .navbar-links {
+  .footer-links {
     list-style: none;
     display: flex;
     align-items: center;
     gap: var(--space-6);
     row-gap: var(--space-4);
     flex-wrap: wrap;
-  }
-  .navbar-links > *:nth-child(2) {
-    margin-left: auto;
   }
   .link-home {
     font-weight: bold;
@@ -30,13 +27,12 @@
   }
 </style>
 
-<header class="navbar">
+<footer class="footer">
   <nav>
-    <ul class="navbar-links">
-      <li class="link-home"><a href="/">Diego López</a></li>
+    <ul class="footer-links">
       <li><a href="/articles">Articles</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/rss">RSS</a></li>
     </ul>
   </nav>
-</header>
+</footer>

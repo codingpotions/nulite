@@ -2,21 +2,60 @@
 layout: layouts/default.liquid
 ---
 
-<header>
+<header class="post-header">
   <h1 class="post-title">{{ title }}</h1>
+  <div class="post-time">
+    <time datetime="2023-09-30T00:00:00+00:00">September 30, 2023</time>
+    <span class="faint">•</span>
+    <span class="reading-time" title="Estimated read time">
+      5 minute read
+    </span>
+  </div>
 </header>
 
-<div class="post-container">
+<section class="post-container">
   {{ content }}
-</div>
+</section>
+
+{% assign similar = collections.posts | similarPosts: page.inputPath, tags %} 
+{% if similar.length > 0 %}
+<section class="related">
+  <h2 class="related-title">You might also enjoy</h2>
+  <ul class="related-posts">
+    {% for post in similar limit: 2 %}
+    <li>
+      <a class="related-article" href="{{ post.url }}">
+        <h3 class="related-article-title">{{ post.data.title }}</h3>
+        <p class="related-article-description">
+          Whenever I buy things I try to prioritize cost per use. Sometimes I
+          consider other priorities such as cost per smile, cost per thrill,
+          cost per externality, and cost per lesson. Cost per use Cost per use
+          is a heuristic that helps me make decisions about most non-perishable
+          purchases such... Keep&nbsp;reading&nbsp;→
+        </p>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
 
 <style>
+  .post-header {
+    margin-bottom: var(--space-5);
+  }
   .post-title {
     font-weight: normal;
-    margin-bottom: var(--space-4);
+  }
+  .post-time {
+    color: var(--color-text-shade);
+    font-size: var(--font-size-xs);
+  }
+  .post-container {
+    padding-bottom: var(--space-8);
+    border-bottom: 1px solid var(--color-text-shade);
   }
   .post-container h2 {
-    font-weight: normal;
     margin-top: var(--space-7);
   }
   .post-container h3 {
@@ -27,6 +66,9 @@ layout: layouts/default.liquid
   }
   .post-container > * + * {
     margin-top: var(--space-3);
+  }
+  .post-container > *:first-child {
+    margin-top: 0;
   }
   .post-container blockquote > * + * {
     margin-top: var(--space-3);
@@ -40,5 +82,32 @@ layout: layouts/default.liquid
   .post-container h4 + *,
   .post-container h5 + * {
     margin-top: var(--space-2);
+  }
+  .related {
+    margin-top: var(--space-8);
+  }
+  .related-posts {
+    list-style: none;
+  }
+  .related-article + .related-article {
+    margin-top: var(--space-4);
+  }
+  .related-article {
+    padding: var(--space-2) 0;
+    color: var(--color-text);
+    text-decoration: unset;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  .related-article-title {
+    transition: color 0.2s ease-in-out;
+  }
+  .related-article:hover .related-article-title {
+    color: var(--color-primary);
+  }
+  .related-article-description {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-shade);
   }
 </style>

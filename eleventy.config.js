@@ -11,12 +11,42 @@ module.exports = function (eleventyConfig) {
   // Watch content images for the image pipeline.
   eleventyConfig.addWatchTarget("content/**/*.{svg,webp,png,jpeg}");
 
-  eleventyConfig.addFilter("postTags", (tags) =>
-    Object.keys(tags)
+  eleventyConfig.addFilter("postTags", (tags) => {
+    return Object.keys(tags)
       .filter((k) => k !== "posts")
       .filter((k) => k !== "all")
       .map((k) => ({ name: k, count: tags[k].length }))
-      .sort((a, b) => b.count - a.count)
+      .sort((a, b) => b.count - a.count);
+  });
+
+  eleventyConfig.addCollection("posts", function (collectionApi) {
+    return collectionApi.getFilteredByGlob("src/posts/*.md").reverse();
+  });
+
+  eleventyConfig.addLiquidFilter(
+    "similarPosts",
+    function (collection, path, tags) {
+      if (!collection) return [];
+      let similarPosts = collection
+        .filter((post) => {
+          return (
+            getSimilarTags(post.data.tags, tags) >= 1 &&
+            post.data.page.inputPath !== path
+          );
+        })
+        .sort((a, b) => {
+          return (
+            getSimilarTags(b.data.tags, tags) -
+            getSimilarTags(a.data.tags, tags)
+          );
+        });
+      if (similarPosts.length < 4) {
+        similarPosts = similarPosts
+          .concat(collection.slice(0, 3))
+          .filter((post) => post.data.page.inputPath !== path);
+      }
+      return getUniquePosts(similarPosts);
+    }
   );
 
   return {
@@ -47,4 +77,21 @@ module.exports = function (eleventyConfig) {
     // folder name and does **not** affect where things go in the output folder.
     pathPrefix: "/",
   };
+};
+
+const getSimilarTags = function (categoriesA, categoriesB) {
+  if (!categoriesA) return [];
+  return categoriesA.filter(Set.prototype.has, new Set(categoriesB)).length;
+};
+
+const getUniquePosts = function (posts) {
+  const field = "url";
+  const uniqueValues = new Set();
+  return posts.filter((item) => {
+    if (!uniqueValues.has(item[field])) {
+      uniqueValues.add(item[field]);
+      return true;
+    }
+    return false;
+  });
 };
