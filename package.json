@@ -4,12 +4,19 @@
   "description": "A minimal, elegant starter project to create a simple blog with Eleventy",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve --quiet",
+    "debug": "DEBUG=Eleventy* npx @11ty/eleventy",
+    "debugstart": "DEBUG=Eleventy* npx @11ty/eleventy --serve --quiet",
+    "benchmark": "DEBUG=Eleventy:Benchmark* npx @11ty/eleventy"
   },
   "keywords": [
     "eleventy",
     "starter"
   ],
   "author": "Diego López",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^2.0.1"
+  }
 }

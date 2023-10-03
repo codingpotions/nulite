@@ -1,0 +1,44 @@
+---
+layout: layouts/default.liquid
+---
+
+<header>
+  <h1 class="post-title">{{ title }}</h1>
+</header>
+
+<div class="post-container">
+  {{ content }}
+</div>
+
+<style>
+  .post-title {
+    font-weight: normal;
+    margin-bottom: var(--space-4);
+  }
+  .post-container h2 {
+    font-weight: normal;
+    margin-top: var(--space-7);
+  }
+  .post-container h3 {
+    margin-top: var(--space-6);
+  }
+  .post-container blockquote {
+    margin: var(--space-5) 0;
+  }
+  .post-container > * + * {
+    margin-top: var(--space-3);
+  }
+  .post-container blockquote > * + * {
+    margin-top: var(--space-3);
+  }
+  .post-container ul,
+  .post-container ol {
+    padding-left: var(--space-6);
+  }
+  .post-container h2 + *,
+  .post-container h3 + *,
+  .post-container h4 + *,
+  .post-container h5 + * {
+    margin-top: var(--space-2);
+  }
+</style>

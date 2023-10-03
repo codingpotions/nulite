@@ -1,0 +1,34 @@
+<style>
+  .navbar {
+    max-width: var(--container-max-size);
+    padding: var(--space-7) var(--container-padding-sides);
+    margin: 0 auto;
+  }
+  .navbar-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+    row-gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+  .navbar-links > *:nth-child(2) {
+    margin-left: auto;
+  }
+  .link-home {
+    font-weight: bold;
+    color: var(--color-primary);
+    font-size: var(--font-size-lg);
+  }
+</style>
+
+<header class="navbar">
+  <nav>
+    <ul class="navbar-links">
+      <li href="/" class="link-home">Diego López</li>
+      <li href="/articles">Articles</li>
+      <li href="/about">About</li>
+      <li href="/rss">RSS</li>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    {% include "css/reset.liquid" %}
+    {% include "css/global.liquid" %}
+  </head>
+  <body class="dark">
+    {% include "navbar.liquid" %}
+    <style>
+      .main-container {
+        margin: 0 auto;
+        max-width: var(--container-max-size);
+        padding: 0 var(--container-padding-sides) var(--space-4);
+      }
+    </style>
+    <main class="main-container">
+      {{ content }}
+    </main>
+  </body>
+</html>
