@@ -1,0 +1,15 @@
+{
+  "name": "nulite-eleventy-starter",
+  "version": "0.0.0",
+  "description": "A minimal, elegant starter project to create a simple blog with Eleventy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "eleventy",
+    "starter"
+  ],
+  "author": "Diego López",
+  "license": "ISC"
+}
