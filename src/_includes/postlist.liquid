@@ -1,0 +1,45 @@
+<ul>
+  {% for post in posts limit: count offset: offset %}
+  <li class="article">
+    <a href="{{ post.url }}">
+      <h3 class="article-title">{{ post.data.title }}</h3>
+      <div class="article-time">
+        <time datetime="{{ post.date }}">
+          {{ post.date | date : "%a, %b %d, %Y" }}
+        </time>
+      </div>
+      <p class="article-description">{{ post.data.description }}</p>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+<style>
+  .article {
+    padding: var(--space-2) 0;
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+  .article a {
+    text-decoration: unset;
+  }
+  .article + .article {
+    margin-top: var(--space-4);
+  }
+  .article-title {
+    transition: color 0.2s ease-in-out;
+  }
+  .article:hover .article-title {
+    color: var(--color-primary);
+  }
+  .article-description {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-shade);
+  }
+  .article-time {
+    color: var(--color-text-shade);
+    font-size: var(--font-size-xs);
+  }
+</style>

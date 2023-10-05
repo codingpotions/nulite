@@ -1,0 +1,26 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - post
+    - posts
+    - tagList
+  addAllPagesToCollections: true
+eleventyComputed:
+  title: Tagged “{{ tag }}”
+permalink: /tags/{{ tag | slugify }}/
+---
+
+<h1>Tagged “{{ tag }}”</h1>
+
+{% assign posts = collections[ tag ] %}
+{% include "postlist.liquid" %}
+
+<style>
+  h1 {
+    margin-bottom: var(--space-2);
+  }
+</style>

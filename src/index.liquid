@@ -5,52 +5,27 @@ layout: layouts/default.liquid
 <div class="main-sections">
   <section>
     <h2>Latest</h2>
-    <a class="article" href="/buy-wisely">
-      <h3 class="article-title">Buy wisely</h3>
-      <div class="article-time">
-        <time datetime="2023-09-30T00:00:00+00:00">September 30, 2023</time>
-        <span class="faint">•</span>
-        <span class="reading-time" title="Estimated read time">
-          5 minute read
-        </span>
-      </div>
-      <p class="article-description">
-        Whenever I buy things I try to prioritize cost per use. Sometimes I
-        consider other priorities such as cost per smile, cost per thrill, cost
-        per externality, and cost per lesson. Cost per use Cost per use is a
-        heuristic that helps me make decisions about most non-perishable
-        purchases such... Keep&nbsp;reading&nbsp;→
-      </p>
-    </a>
+    {% assign posts = collections.posts %}
+    {% assign count = 1 %}
+    {% include "postlist.liquid" %}
   </section>
 
   {% assign tagList = collections | postTags %} {% if tagList.length > 0 %}
   <section>
     <h2>Topics</h2>
     {%- for tag in tagList -%}
-    <a href="/tag/{{ tag.name }}">{{ tag.name }}({{ tag.count }})</a>{% if
+    <a href="/tags/{{ tag.name }}">{{ tag.name }}({{ tag.count }})</a>{% if
     forloop.last != true %}<span>, </span>{% endif %} {%- endfor -%}
   </section>
   {% endif %}
 
   <section>
     <h2>More articles</h2>
-    <ul>
-      {% for post in collections.posts limit:5 %}
-      <a class="article" href="{{ post.url }}">
-        <h3 class="article-title">{{ post.data.title }}</h3>
-        <div class="article-time">
-          <time datetime="2023-09-30T00:00:00+00:00">September 30, 2023</time>
-          <span class="faint">•</span>
-          <span class="reading-time" title="Estimated read time">
-            5 minute read
-          </span>
-        </div>
-        <p class="article-description">{{ post.data.description }}</p>
-      </a>
-      {% endfor %}
-    </ul>
-    <a class="articles-link" href="/articles">All the articles</a>
+    {% assign posts = collections.posts %}
+    {% assign count = 5 %}
+    {% assign offset = 1 %}
+    {% include "postlist.liquid" %}
+    <a class="arlimitticles-link" href="/articles">All the articles</a>
   </section>
 </div>
 
@@ -59,31 +34,6 @@ layout: layouts/default.liquid
     display: flex;
     flex-direction: column;
     gap: var(--space-7);
-  }
-  .article {
-    padding: var(--space-2) 0;
-    color: var(--color-text);
-    text-decoration: unset;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-1);
-  }
-  .article + .article {
-    margin-top: var(--space-4);
-  }
-  .article-title {
-    transition: color 0.2s ease-in-out;
-  }
-  .article:hover .article-title {
-    color: var(--color-primary);
-  }
-  .article-description {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-shade);
-  }
-  .article-time {
-    color: var(--color-text-shade);
-    font-size: var(--font-size-xs);
   }
   .articles-link {
     display: block;
