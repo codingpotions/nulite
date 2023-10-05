@@ -25,12 +25,11 @@ layout: layouts/default.liquid
     </a>
   </section>
 
-  {% assign tagList = collections | postTags %} 
-  {% if tagList.length > 0 %}
+  {% assign tagList = collections | postTags %} {% if tagList.length > 0 %}
   <section>
     <h2>Topics</h2>
     {%- for tag in tagList -%}
-      <a href="/tag/{{ tag.name }}">{{ tag.name }}({{ tag.count }})</a>{% if
+    <a href="/tag/{{ tag.name }}">{{ tag.name }}({{ tag.count }})</a>{% if
     forloop.last != true %}<span>, </span>{% endif %} {%- endfor -%}
   </section>
   {% endif %}
@@ -38,7 +37,7 @@ layout: layouts/default.liquid
   <section>
     <h2>More articles</h2>
     <ul>
-      {% for post in collections.posts %}
+      {% for post in collections.posts limit:5 %}
       <a class="article" href="{{ post.url }}">
         <h3 class="article-title">{{ post.data.title }}</h3>
         <div class="article-time">
@@ -52,6 +51,7 @@ layout: layouts/default.liquid
       </a>
       {% endfor %}
     </ul>
+    <a class="articles-link" href="/articles">All the articles</a>
   </section>
 </div>
 
@@ -85,5 +85,9 @@ layout: layouts/default.liquid
   .article-time {
     color: var(--color-text-shade);
     font-size: var(--font-size-xs);
+  }
+  .articles-link {
+    display: block;
+    margin-top: var(--space-4);
   }
 </style>

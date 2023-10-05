@@ -3,6 +3,12 @@
     max-width: var(--container-max-size);
     padding: var(--space-7) var(--container-padding-sides);
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+  }
+  .navbar nav {
+    flex: 1;
   }
   .navbar a {
     text-decoration: none;
@@ -33,10 +39,11 @@
 <header class="navbar">
   <nav>
     <ul class="navbar-links">
-      <li class="link-home"><a href="/">Diego López</a></li>
+      <li class="link-home"><a href="/">Nulite starter ⚗️</a></li>
       <li><a href="/articles">Articles</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/rss">RSS</a></li>
     </ul>
   </nav>
+  {% include "dark-toggler.liquid" %}
 </header>
