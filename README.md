@@ -53,12 +53,12 @@ Output files are generated into the `_site` folder.
 ```
 src/
   _includes/
-    All UI partials
+    All UI partials. Inside the css folder, in the global.liquid you can change the CSS variables
   _data/
     Here you can change the site info, like the title and description
   posts/
     Each individual post in markdown files
   public/
-    This folder contians statics files, copied directly into the output
+    This folder contians statics files, copied directly into the output, like the favicon, for ecample
 Configuration and build files
 ```
