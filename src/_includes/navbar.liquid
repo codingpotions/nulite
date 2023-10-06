@@ -34,12 +34,22 @@
     color: var(--color-primary);
     font-size: var(--font-size-lg);
   }
+  @media (max-width: 1250px) {
+    .navbar-links > *:nth-child(1) {
+      width: 100%;
+    }
+    .navbar-links > *:nth-child(2) {
+      margin-left: unset;
+    }
+  }
 </style>
 
 <header class="navbar">
   <nav>
     <ul class="navbar-links">
-      <li class="link-home"><a href="/">Nulite starter ⚗️</a></li>
+      <li class="link-home">
+        <a href="/">{{ site.shortTitle }}</a>
+      </li>
       <li><a href="/articles">Articles</a></li>
       <li><a href="/about">About</a></li>
       <li><a href="/rss.xml">RSS</a></li>

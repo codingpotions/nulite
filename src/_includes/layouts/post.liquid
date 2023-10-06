@@ -5,11 +5,9 @@ layout: layouts/default.liquid
 <header class="post-header">
   <h1 class="post-title">{{ title }}</h1>
   <div class="post-time">
-    <time datetime="2023-09-30T00:00:00+00:00">September 30, 2023</time>
-    <span class="faint">•</span>
-    <span class="reading-time" title="Estimated read time">
-      5 minute read
-    </span>
+    <time datetime="{{ post.date }}">
+      {{ page.date | date : "%a, %b %d, %Y" }}
+    </time>
   </div>
 </header>
 
@@ -17,8 +15,8 @@ layout: layouts/default.liquid
   {{ content }}
 </section>
 
-{% assign similar = collections.posts | similarPosts: page.inputPath, tags %} 
-{% if similar.length > 0 %}
+{% assign similar = collections.posts | similarPosts: page.inputPath, tags %} {%
+if similar.length > 0 %}
 <section class="related">
   <h2 class="related-title">You might also enjoy</h2>
   <ul class="related-posts">
@@ -38,7 +36,7 @@ layout: layouts/default.liquid
     {% endfor %}
   </ul>
 </section>
-{% endif %}
+{% endif %} {% include "css/prism.liquid" %}
 
 <style>
   .post-header {
@@ -109,5 +107,40 @@ layout: layouts/default.liquid
   .related-article-description {
     font-size: var(--font-size-xs);
     color: var(--color-text-shade);
+  }
+  :root {
+    --prism-foreground: #393a34;
+    --prism-background: transparent;
+
+    --prism-comment: #758575;
+    --prism-namespace: #444444;
+    --prism-string: #bc8671;
+    --prism-punctuation: #80817d;
+    --prism-literal: #36acaa;
+    --prism-keyword: #248459;
+    --prism-function: #849145;
+    --prism-deleted: #9a050f;
+    --prism-class: #2b91af;
+    --prism-builtin: #800000;
+    --prism-property: #ce9178;
+    --prism-regex: #ad502b;
+  }
+
+  [data-theme="dark"] {
+    --prism-foreground: #d4d4d4;
+
+    --prism-namespace: #aaaaaa;
+    --prism-comment: #758575;
+    --prism-namespace: #444444;
+    --prism-string: #ce9178;
+    --prism-punctuation: #d4d4d4;
+    --prism-literal: #36acaa;
+    --prism-keyword: #38a776;
+    --prism-function: #dcdcaa;
+    --prism-deleted: #9a050f;
+    --prism-class: #4ec9b0;
+    --prism-builtin: #d16969;
+    --prism-property: #ce9178;
+    --prism-regex: #ad502b;
   }
 </style>

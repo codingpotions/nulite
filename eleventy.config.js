@@ -1,10 +1,15 @@
 const pluginRss = require("@11ty/eleventy-plugin-rss");
+const codeStyleHooks = require("eleventy-plugin-code-style-hooks");
 
 module.exports = function (eleventyConfig) {
   // Copy the contents of the `public` folder to the output folder
   // For example, `./public/css/` ends up in `_site/css/`
   eleventyConfig.addPassthroughCopy({
     "./public/": "/",
+  });
+
+  eleventyConfig.addPlugin(codeStyleHooks, {
+    lineNumbers: false,
   });
 
   eleventyConfig.addPlugin(pluginRss);

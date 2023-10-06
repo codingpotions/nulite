@@ -219,15 +219,15 @@ block by at least 4 spaces or 1 tab.
 This is a normal paragraph:
 
 ```
-    This is a code block.
+This is a code block.
 ```
 
-Here is an example of AppleScript:
+Here is an example of Javascript
 
-```
-    tell application "Foo"
-        beep
-    end tell
+```Javascript
+function helloWorld() {
+  console.log("Hello World");
+}
 ```
 
 A code block continues until it reaches a line that is not indented
