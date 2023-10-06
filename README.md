@@ -11,6 +11,12 @@
 
 Nulite is a simple, elegant, minimalistic stater project for [Eleventy](https://www.11ty.dev/) to help you create a simple blog with focus on performance and simplicity.
 
+This project is strongly influenced by [Steph Ango's blog](https://stephango.com/) (one of the creators of Obsidian).
+
+If you like the project feel free to leave a star ⭐ You can also send me issues that you can find or proposals for improvement in PRs.
+
+![Preview of the Nulite blog starter. A simple website whith sample articles](https://imgur.com/lmqf76D.png)
+
 ## Features
 
 - 🧐 Simple. Elegant, minimalist design, clear and easy to read.
