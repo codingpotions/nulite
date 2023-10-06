@@ -1,6 +1,6 @@
 {
-  "name": "nulite-eleventy-starter",
-  "version": "0.0.0",
+  "name": "nulite-starter",
+  "version": "1.0.0",
   "description": "A minimal, elegant starter project to create a simple blog with Eleventy",
   "main": "index.js",
   "scripts": {
