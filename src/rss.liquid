@@ -14,11 +14,12 @@
   }
 }
 ---
+
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:base="{{ site.url }}">
   <title>{{ site.title }}</title>
   <subtitle>{{ site.subtitle }}</subtitle>
-  <link href="{{ permalink | absoluteUrl(site.url) }}" rel="self" />
+  <link href="{{ permalink }}" rel="self" />
   <link href="{{ site.url }}" />
   <updated>
     {{ collections.posts | getNewestCollectionItemDate | dateToRfc3339 }}
@@ -27,15 +28,14 @@
   <author>
     <name>{{ site.author.name }}</name>
   </author>
-  {%- for post in collections.posts %} {%- set absolutePostUrl = post.url |
-  absoluteUrl(site.url) %}
+  {%- for post in collections.posts %} {%- assign absolutePostUrl = post.url %}
   <entry>
     <title>{{ post.data.title }}</title>
     <link href="{{ absolutePostUrl }}" />
     <updated>{{ post.date | dateToRfc3339 }}</updated>
     <id>{{ absolutePostUrl }}</id>
     <content xml:lang="{{ site.language }}" type="html">
-      {{ post.templateContent | htmlToAbsoluteUrls(absolutePostUrl) }}
+      {{ post.templateContent }}
     </content>
   </entry>
   {%- endfor %}
