@@ -29,7 +29,7 @@ If you like the project feel free to leave a star ⭐ You can also send me issue
 
 ## Getting started
 
-1. Clone or fork this repo: `https://github.com/codingpotions/nulite`
+1. Fork this repo, or click in the button "Use this template": `https://github.com/codingpotions/nulite`
 2. `cd` into the project directory and run `npm install`
 
 ## Running and serving a dev build
@@ -55,7 +55,7 @@ src/
   _includes/
     All UI partials
   _data/
-    Here yo can change the
+    Here you can change the site info, like the title and description
   posts/
     Each individual post in markdown files
   public/
