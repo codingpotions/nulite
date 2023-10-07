@@ -17,6 +17,8 @@ If you like the project feel free to leave a star ⭐ You can also send me issue
 
 ![Preview of the Nulite blog starter. A simple website whith sample articles](https://imgur.com/lmqf76D.png)
 
+If you know Spanish, take a look at this article to [set up your blog for free with this template](https://codingpotions.com/crear-blog-gratis-markdown/)
+
 ## Features
 
 - 🧐 Simple. Elegant, minimalist design, clear and easy to read.
